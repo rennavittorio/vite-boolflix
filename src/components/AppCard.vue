@@ -46,16 +46,19 @@ export default {
         <div class="img-wrapper">
             <img :src="cardImg" alt="" class="poster">
         </div>
-        <h3 class="film-type"> {{ filmType }} </h3>
-        <h3 class="title"> {{ cardTitle }} </h3>
-        <h5 class="original-title"> {{ cardOriginalTitle }} </h5>
-        <div class="language"> 
-            <img :src="cardLang" alt="">
-        </div>
-        <div class="ranking">
-            <font-awesome-icon icon="fa-solid fa-star" 
-            :class="['rank-icon', n <= maxRank ? 'full' : '']" 
-            v-for="n in 5" />
+        <div class="text-wrapper">
+            <h3 class="film-type"> {{ filmType }} </h3>
+            <h3 class="title"> {{ cardTitle }} </h3>
+            <h5 class="original-title"> {{ cardOriginalTitle }} </h5>
+            <div class="language"> 
+                <img :src="cardLang" alt="">
+            </div>
+            <div class="ranking">
+                <font-awesome-icon icon="fa-solid fa-star" 
+                :class="['rank-icon', n <= maxRank ? 'full' : '']" 
+                v-for="n in 5" />
+            </div>
+
         </div>
     </div>
 
@@ -67,10 +70,32 @@ export default {
 
 .card {
     padding: 15px;
+    position: relative;
 
     * {
         margin-bottom: 5px;
     }
+
+    &:hover .img-wrapper img {
+        filter: opacity(0.25) brightness(0.5) saturate(50%);
+
+    }
+
+    &:hover .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        color: #fff;
+    }
+
+    &:hover .ranking {
+        display: flex;
+        gap: 5px;
+    }
+        
 
     .img-wrapper {
 
@@ -83,9 +108,19 @@ export default {
         }
     }
 
+    .text-wrapper {
+        position: absolute;
+        width: 75%;
+        padding: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+
+    }
+
     .title {
         font-size: 1rem;
-        color: $main-light;
     }
 
     .original_title, .language, .ranking, .film-type {
@@ -94,13 +129,15 @@ export default {
     }
 
     .ranking {
-        display: flex;
-        gap: 5px;
-        
-        .rank-icon.full {
-                color: gold;
-            }
+        display: none;
 
+        .rank-icon {
+            color: black;
+        }
+
+        .rank-icon.full {
+            color: gold;
+        }
     }
         
 

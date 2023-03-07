@@ -104,7 +104,7 @@ export default {
     <main class="main">
 
         <div class="container">
-            <h1>Tv series</h1>
+            <h1 class="section-title">Tv series</h1>
             <div class="grid">
 
                 <AppCard 
@@ -120,7 +120,7 @@ export default {
         </div>
 
         <div class="container">
-            <h1>Films</h1>
+            <h1 class="section-title">Films</h1>
             <div class="grid">
 
                 <AppCard 
@@ -151,6 +151,11 @@ export default {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-top: 40px;
     }
 }
 
