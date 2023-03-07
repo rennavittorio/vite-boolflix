@@ -3,7 +3,11 @@ import axios from 'axios';
 import store from '../store';
 
 export default {
-    props: {    
+    props: {
+        filmType: {
+            type: String,
+            required: true,
+        },
         cardTitle: { //title
             type: String,
             required: true,
@@ -38,6 +42,7 @@ export default {
         <div class="img-wrapper">
             <img src="/images/the-whale-ph.jpg" alt="" class="poster">
         </div>
+        <h3 class="film-type"> {{ filmType }} </h3>
         <h3 class="title"> {{ cardTitle }} </h3>
         <h5 class="original-title"> {{ cardOriginalTitle }} </h5>
         <div class="language"> 
@@ -53,7 +58,7 @@ export default {
 @use '../style/partials/_variables' as *;
 
 .card {
-    padding: 10px;
+    padding: 15px;
 
     .img-wrapper {
 
@@ -68,7 +73,7 @@ export default {
         color: $main-light;
     }
 
-    .original_title, .language, .ranking {
+    .original_title, .language, .ranking, .film-type {
         font-size: 0.75rem;
     }
 
