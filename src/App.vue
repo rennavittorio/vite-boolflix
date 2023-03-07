@@ -1,18 +1,22 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
 
 export default {
   components: {
     AppHeader,
+    AppMain,
   }
 }
 
 </script>
 
 <template>
-  <div>
+  <div class="wrapper">
 
     <AppHeader />
+
+    <AppMain class="app-main" />
 
   </div>
 </template>
@@ -20,6 +24,18 @@ export default {
 <style lang="scss">
 @use './style/general.scss';
 @use './style/partials/_variables' as *;
+
+.wrapper {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  .app-main {
+    flex-grow: 1;
+  }
+  
+}
 
 
 </style>

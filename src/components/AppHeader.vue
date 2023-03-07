@@ -46,6 +46,7 @@ export default {
 
 .container {
 
+
     .row {
         justify-content: space-between;
         align-items: center;
