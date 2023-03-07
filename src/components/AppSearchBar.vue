@@ -12,9 +12,14 @@ export default {
 
     methods: {
         setQuery(){
-            this.store.filmQuery = this.currentQuery;
-            console.log('query set:', this.store.filmQuery);
-            this.currentQuery = '';
+            if (this.currentQuery.trim() !== ''){
+                this.store.filmQuery = this.currentQuery;
+                console.log('query set:', this.store.filmQuery);
+                this.currentQuery = '';
+            } else {
+                this.currentQuery = '';
+                alert('pls insert a valid query')
+            }
         }
     },
 }
