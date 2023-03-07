@@ -29,7 +29,7 @@ export default {
                 params: {
                     api_key: apiKey,
                     language: 'en-US',
-                    query: 'm',
+                    query: this.store.filmQuery,
                 }
             })
             .then((res)=>{
@@ -37,6 +37,18 @@ export default {
                 console.log(this.store.filmList);
 
             })
+        }
+    },
+
+    watch: {
+        filmQuerySet(){
+            this.fetchFilms();
+        }
+    },
+
+    computed: {
+        filmQuerySet(){
+            return this.store.filmQuery;
         }
     },
 

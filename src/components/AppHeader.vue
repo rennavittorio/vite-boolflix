@@ -2,12 +2,19 @@
 import axios from 'axios';
 import store from '../store';
 
+import AppSearchBar from './AppSearchBar.vue';
+
 export default {
+    components: {
+        AppSearchBar,
+    },
+
     data(){
         return {
             store,
         }
-    }
+    },
+
 }
 
 </script>
@@ -22,10 +29,8 @@ export default {
                 <div class="logo-wrapper">
                     <img src="/images/netflix-logo.jpg" alt="netflix-logo">
                 </div>
-    
-                <div class="searchbar">
-                    <input type="text" placeholder="insert here...">
-                </div>
+
+                <AppSearchBar />
     
             </div>
     
@@ -39,7 +44,7 @@ export default {
 @use '../style/general.scss';
 @use '../style/partials/_variables' as *;
 
-.header, input {
+.header {
     background-color: #000;
     color: $main-light;
 }
@@ -54,15 +59,6 @@ export default {
 }
 .logo-wrapper {
     width: 75px;
-}
-
-.searchbar {
-
-    input {
-        padding: 10px;
-        border-color: $main-red;
-    }
-    
 }
 
 </style>

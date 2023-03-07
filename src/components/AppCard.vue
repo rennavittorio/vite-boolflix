@@ -17,7 +17,7 @@ export default {
             required: true,
         },
         cardRank: { //vote_average
-            type: String,
+            type: Number,
             required: true,
         },
         
