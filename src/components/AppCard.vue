@@ -40,7 +40,9 @@ export default {
         </div>
         <h3 class="title"> {{ cardTitle }} </h3>
         <h5 class="original-title"> {{ cardOriginalTitle }} </h5>
-        <p class="language"> {{ cardLang }} </p>
+        <div class="language"> 
+            <img :src="cardLang" alt="">
+        </div>
         <p class="ranking"> {{ cardRank.toFixed(0) }} </p>
     </div>
 
@@ -68,6 +70,13 @@ export default {
 
     .original_title, .language, .ranking {
         font-size: 0.75rem;
+    }
+
+    .language img {
+        width: 30px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        object-position: center;
     }
 
 

@@ -37,7 +37,23 @@ export default {
                 console.log(this.store.filmList);
 
             })
-        }
+        },
+
+        setFlag(film){
+            let filmFlag = '';
+            switch(film.original_language){
+                case 'it':
+                    filmFlag = '/images/it-flag.svg';
+                    break;
+                case 'en':
+                    filmFlag = '/images/uk-flag.png';
+                    break;
+                default:
+                    filmFlag = '/images/rest-flag.png';
+            }
+
+            return filmFlag;
+        },
     },
 
     watch: {
@@ -49,7 +65,7 @@ export default {
     computed: {
         filmQuerySet(){
             return this.store.filmQuery;
-        }
+        },
     },
 
     created() {
@@ -71,7 +87,7 @@ export default {
                 v-for="film in store.filmList" :key="film.id"
                 :cardTitle="film.title" 
                 :cardOriginalTitle="film.original_title" 
-                :cardLang="film.original_language" 
+                :cardLang="setFlag(film)" 
                 :cardRank="film.vote_average" />
 
             </div>
