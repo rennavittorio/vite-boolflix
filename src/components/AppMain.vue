@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useAttrs } from 'vue';
 import store from '../store';
 
 import AppCard from './AppCard.vue';
@@ -13,6 +14,35 @@ export default {
         return {
             store,
         }
+    },
+
+    methods: {
+        fetchFilms(){
+            const mainUrl = 'https://api.themoviedb.org/3';
+            const sectionUrl = '/search/movie';
+            const completeUrl = mainUrl + sectionUrl;
+
+            const apiKey = '483d15c985307da0fbc47d77970aec89';
+
+            console.log('fetching films done')
+            axios.get(completeUrl, {
+                params: {
+                    api_key: apiKey,
+                    language: 'en-US',
+                    query: 'm',
+                }
+            })
+            .then((res)=>{
+                this.store.filmList = res.data.results
+                console.log(this.store.filmList);
+
+            })
+        }
+    },
+
+    created() {
+        this.fetchFilms()
+
     }
 }
 
@@ -25,9 +55,12 @@ export default {
         <div class="container">
             <div class="grid">
 
-                <AppCard />
-                <AppCard />
-                <AppCard />
+                <AppCard 
+                v-for="film in store.filmList" :key="film.id"
+                :cardTitle="film.title" 
+                :cardOriginalTitle="film.original_title" 
+                :cardLang="film.original_language" 
+                :cardRank="film.vote_average" />
 
             </div>
         </div>
@@ -46,7 +79,7 @@ export default {
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 10px;
     }
 }
