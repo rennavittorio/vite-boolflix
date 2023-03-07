@@ -1,17 +1,23 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
+
+export default {
+  components: {
+    AppHeader,
+  }
+}
 
 </script>
 
 <template>
   <div>
 
-    it works!
+    <AppHeader />
 
   </div>
 </template>
 
 <style lang="scss">
 @use './style/general.scss';
-@use './style/partials/variables' as *;
 
 </style>
