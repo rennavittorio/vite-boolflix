@@ -24,10 +24,10 @@ export default {
             type: String,
             required: true,
         },
-        cardRank: { //vote_average
+        maxRank: {
             type: Number,
             required: true,
-        },
+        }
         
     },
 
@@ -52,7 +52,11 @@ export default {
         <div class="language"> 
             <img :src="cardLang" alt="">
         </div>
-        <p class="ranking"> {{ cardRank.toFixed(0) }} </p>
+        <div class="ranking">
+            <font-awesome-icon icon="fa-solid fa-star" 
+            :class="['rank-icon', n <= maxRank ? 'full' : '']" 
+            v-for="n in 5" />
+        </div>
     </div>
 
 </template>
@@ -63,6 +67,10 @@ export default {
 
 .card {
     padding: 15px;
+
+    * {
+        margin-bottom: 5px;
+    }
 
     .img-wrapper {
 
@@ -82,7 +90,19 @@ export default {
 
     .original_title, .language, .ranking, .film-type {
         font-size: 0.75rem;
+
     }
+
+    .ranking {
+        display: flex;
+        gap: 5px;
+        
+        .rank-icon.full {
+                color: gold;
+            }
+
+    }
+        
 
     .language img {
         width: 30px;

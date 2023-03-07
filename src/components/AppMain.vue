@@ -36,7 +36,6 @@ export default {
                 })
                 .then((res)=>{
                     this.store.filmList = res.data.results
-                    console.log('whole list', this.store.filmList);
                     if(el === '/search/movie'){
                         this.store.onlyFilmList = res.data.results;
                         console.log('only films:', this.store.onlyFilmList);
@@ -65,6 +64,10 @@ export default {
 
             return filmFlag;
         },
+
+        convertedVote(film){
+            return Math.floor(film.vote_average / 2);
+        },
     },
 
     watch: {
@@ -84,7 +87,8 @@ export default {
 
         reducedFilmList(){
             return this.store.onlyFilmList.splice(0,8);
-        }
+        },
+
     },
 
     created() {
@@ -109,8 +113,8 @@ export default {
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title !== undefined ? film.original_title : film.original_name" 
-                :cardLang="setFlag(film)" 
-                :cardRank="film.vote_average" />
+                :cardLang="setFlag(film)"
+                :maxRank="convertedVote(film)" />
 
             </div>
         </div>
@@ -125,8 +129,8 @@ export default {
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title !== undefined ? film.original_title : film.original_name" 
-                :cardLang="setFlag(film)" 
-                :cardRank="film.vote_average" />
+                :cardLang="setFlag(film)"
+                :maxRank="convertedVote(film)" />
 
             </div>
         </div>
