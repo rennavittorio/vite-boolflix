@@ -79,11 +79,11 @@ export default {
         },
 
         reducedSeriesList(){
-            return this.store.onlyTvList.splice(0,5);
+            return this.store.onlyTvList.splice(0,8);
         },
 
         reducedFilmList(){
-            return this.store.onlyFilmList.splice(0,5);
+            return this.store.onlyFilmList.splice(0,8);
         }
     },
 
@@ -105,6 +105,7 @@ export default {
 
                 <AppCard 
                 v-for="film in reducedSeriesList" :key="film.id"
+                :cardImg="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title !== undefined ? film.original_title : film.original_name" 
@@ -120,6 +121,7 @@ export default {
 
                 <AppCard 
                 v-for="film in reducedFilmList" :key="film.id"
+                :cardImg="`https://image.tmdb.org/t/p/w342${film.poster_path}`"
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title !== undefined ? film.original_title : film.original_name" 
@@ -143,7 +145,7 @@ export default {
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px;
     }
 }

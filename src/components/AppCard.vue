@@ -4,6 +4,10 @@ import store from '../store';
 
 export default {
     props: {
+        cardImg: {
+            type: String,
+            required: true,
+        },
         filmType: {
             type: String,
             required: true,
@@ -40,7 +44,7 @@ export default {
 
     <div class="card">
         <div class="img-wrapper">
-            <img src="/images/the-whale-ph.jpg" alt="" class="poster">
+            <img :src="cardImg" alt="" class="poster">
         </div>
         <h3 class="film-type"> {{ filmType }} </h3>
         <h3 class="title"> {{ cardTitle }} </h3>
@@ -64,7 +68,7 @@ export default {
 
 
         .poster {
-            width: 100px;
+            width: 100%;
         }
     }
 
