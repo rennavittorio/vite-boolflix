@@ -110,6 +110,7 @@ export default {
 .card {
     // padding: 15px;
     position: relative;
+    cursor: pointer;
 
     * {
         margin-bottom: 5px;

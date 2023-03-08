@@ -74,7 +74,6 @@ export default {
 .detailed-card {
     width: 500px;
     height: auto;
-    aspect-ratio: 1/1;
     border-radius: 20px;
     background-color: $main-light;
     color: $main-dark;
@@ -100,9 +99,10 @@ export default {
     .text-wrapper {
         padding: 20px;
 
-        * {
+        .title, .description {
             margin-bottom: 20px;
         }
+
     }
 
 
@@ -122,6 +122,7 @@ export default {
     .cast-wrapper {
         display: flex;
         flex-wrap: wrap;
+        gap: 0 10px;
 
 
         .cast-title {
