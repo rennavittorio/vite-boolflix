@@ -45,7 +45,34 @@ export default {
         setCurrentCard(currentCard){
             this.store.currentCard = currentCard;
             console.log('current currentCard:', this.store.currentCard);
-        }
+
+            this.fetchCast();
+        },
+
+        fetchCast(){
+            // https://api.themoviedb.org/3/tv/559969/credits?api_key=483d15c985307da0fbc47d77970aec89
+            // https://api.themoviedb.org/3/movie/559969/credits?api_key=483d15c985307da0fbc47d77970aec89
+            const mainUrl = 'https://api.themoviedb.org/3';
+            let sectionUrl = ''
+            if (this.store.currentCard.title !== undefined){
+                sectionUrl = '/movie'
+            } else {
+                sectionUrl = '/tv'
+            }
+            const filmId = `/${this.store.currentCard.id}`;
+            const CREDITS_CONST = '/credits'
+            const apiKey = '483d15c985307da0fbc47d77970aec89';
+
+            axios.get(`${mainUrl}${sectionUrl}${filmId}${CREDITS_CONST}`, {
+                params: {
+                    api_key: apiKey,
+                }
+            })
+            .then((res)=>{
+                this.store.currentCast = res.data.cast;
+                console.log('res cast', res.data.cast);
+            })
+        },
     }
 }
 

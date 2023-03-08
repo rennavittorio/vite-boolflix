@@ -6,6 +6,7 @@ const store = reactive({
     filmQuery: 'atta',
 
     currentCard: undefined,
+    currentCast: [],
     
 })
 

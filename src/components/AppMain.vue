@@ -86,6 +86,9 @@ export default {
         filmQuerySet(){
             return this.store.filmQuery;
         },
+        castToFive(){
+            return this.store.currentCast.slice(0, 5)
+        }
 
     },
 
@@ -103,7 +106,7 @@ export default {
 
         <div class="container">
 
-            <div class="grid">
+            <div :class="['grid', store.currentCard !== undefined ? 'blurred' : '' ]">
 
                 <AppCard 
                 v-for="film in allFilmList" :key="film.id"
@@ -118,6 +121,10 @@ export default {
             </div>
 
             <AppDetailedCard
+            :cardImg="store.currentCard === undefined ? '/images/img-not-found.png' : `https://image.tmdb.org/t/p/w500${store.currentCard.poster_path}` || '/images/img-not-found.png'"
+            :cardTitle="store.currentCard === undefined ? 'ph' : store.currentCard.title || store.currentCard.name"
+            :cardOverview="store.currentCard === undefined ? 'ph' : store.currentCard.overview"
+            :cardCast="castToFive"
             :class="['hover-card', store.currentCard !== undefined ? 'active' : '']"
             />
 
@@ -140,6 +147,11 @@ export default {
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
         padding: 20px 0;
+
+
+        &.blurred {
+            filter: blur(5px) brightness(0.5);
+        }
     }
 
 }

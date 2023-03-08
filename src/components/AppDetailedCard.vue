@@ -3,6 +3,24 @@ import axios from 'axios';
 import store from '../store';
 
 export default {
+    props: {
+        cardImg: {
+            type: String,
+            required: true,
+        },
+        cardTitle: { //title
+            type: String,
+            required: true,
+        },
+        cardOverview: {
+            type: String,
+            required: true,
+        },
+        cardCast: {
+            type: Array,
+            required: true,
+        }
+    },
     data(){
         return {
             store,
@@ -23,17 +41,22 @@ export default {
 
     <div class="detailed-card">
         <div class="img-wrapper">
-            <img src="/images/the-whale-ph.jpg" alt="">
+            <img :src="cardImg" alt="">
         </div>
         <div class="text-wrapper">
             <h1 class="title">
-                Title...
+                {{ cardTitle }}
             </h1>
             <p class="description">
-                Description...
+                {{ cardOverview }}
             </p>
-            <ul>Cast
-                <li>Cast member...</li>
+            <ul class="cast-wrapper">
+                <span class="cast-title">Cast:</span>
+                <li
+                v-for="member in cardCast"
+                >
+                    {{ member.name }}
+                </li>
             </ul>
         </div>
         <div class="btn-esc"
@@ -89,6 +112,17 @@ export default {
         color: $main-light;
         cursor: pointer;
         background-color: $main-red;
+    }
+
+    .cast-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .cast-title {
+            font-weight: 700;
+            color: $main-red;
+        }
     }
 }
 
