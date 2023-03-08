@@ -127,6 +127,10 @@ export default {
             font-weight: 700;
             color: $main-red;
         }
+
+        li:not(:last-child)::after{
+            content: ',';
+        }
     }
 }
 
