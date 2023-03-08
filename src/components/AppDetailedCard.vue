@@ -72,7 +72,8 @@ export default {
 @use '../style/partials/_variables' as *;
 
 .detailed-card {
-    width: 50%;
+    width: 500px;
+    height: auto;
     aspect-ratio: 1/1;
     border-radius: 20px;
     background-color: $main-light;
@@ -121,7 +122,7 @@ export default {
     .cast-wrapper {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+
 
         .cast-title {
             font-weight: 700;
