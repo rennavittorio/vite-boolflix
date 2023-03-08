@@ -84,13 +84,13 @@ export default {
 
     .img-wrapper {
         width: 100%;
-        aspect-ratio: 16 / 5;
+        aspect-ratio: 16 / 9;
         border-radius: 20px;
 
         img {
             width: 100%;
             border-radius: 20px 20px 0 0;
-            aspect-ratio: 16/5;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             object-position: center;
         }
@@ -98,6 +98,10 @@ export default {
 
     .text-wrapper {
         padding: 20px;
+
+        * {
+            margin-bottom: 20px;
+        }
     }
 
 
