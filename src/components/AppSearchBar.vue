@@ -29,7 +29,6 @@ export default {
 <template>
 
     <div class="searchbar">
-        {{ currentQuery }}
         <input 
         type="text" placeholder="insert here..."
         v-model="currentQuery"

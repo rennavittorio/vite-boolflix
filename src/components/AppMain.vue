@@ -109,7 +109,7 @@ export default {
 
                 <AppCard 
                 v-for="film in reducedSeriesList" :key="film.id"
-                :cardImg="`https://image.tmdb.org/t/p/w500${film.poster_path}`"
+                :cardImg="film.poster_path !== null ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : '/images/img-not-found.png'"
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title !== undefined ? film.original_title : film.original_name" 
