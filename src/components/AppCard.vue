@@ -47,7 +47,6 @@ export default {
             <img :src="cardImg" alt="" class="poster">
         </div>
         <div class="text-wrapper">
-            <h3 class="film-type"> {{ filmType }} </h3>
             <h3 class="title"> {{ cardTitle }} </h3>
             <h5 class="original-title"> {{ cardOriginalTitle }} </h5>
             <div class="language"> 
@@ -58,8 +57,8 @@ export default {
                 :class="['rank-icon', n <= maxRank ? 'full' : '']" 
                 v-for="n in 5" />
             </div>
-
         </div>
+        <h3 class="film-type"> {{ filmType }} </h3>
     </div>
 
 </template>
@@ -69,7 +68,7 @@ export default {
 @use '../style/partials/_variables' as *;
 
 .card {
-    padding: 15px;
+    // padding: 15px;
     position: relative;
 
     * {
@@ -116,14 +115,13 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         display: none;
-
     }
 
     .title {
         font-size: 1rem;
     }
 
-    .original_title, .language, .ranking, .film-type {
+    .original_title, .language, .ranking {
         font-size: 0.75rem;
 
     }
@@ -147,6 +145,20 @@ export default {
         aspect-ratio: 1/1;
         object-fit: cover;
         object-position: center;
+    }
+
+    .film-type {
+        background-color: $main-red;
+        color: $main-light;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        min-width: 100px;
+        padding: 10px;
+        text-align: center;
+
+        position: absolute;
+        bottom: 20px;
+        left: 0px;
     }
 
 
