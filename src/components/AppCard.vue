@@ -143,7 +143,8 @@ export default {
 
     .language img {
         width: 30px;
-        aspect-ratio: 4/3;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
         object-fit: cover;
         object-position: center;
     }
