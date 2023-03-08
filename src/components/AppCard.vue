@@ -27,6 +27,10 @@ export default {
         maxRank: {
             type: Number,
             required: true,
+        },
+        currentCard: {
+            type: Object,
+            required: true,
         }
         
     },
@@ -35,6 +39,13 @@ export default {
         return {
             store,
         }
+    },
+
+    methods: {
+        setCurrentCard(currentCard){
+            this.store.currentCard = currentCard;
+            console.log('current currentCard:', this.store.currentCard);
+        }
     }
 }
 
@@ -42,7 +53,9 @@ export default {
 
 <template>
 
-    <div class="card">
+    <div class="card"
+    @click="setCurrentCard(currentCard)"
+    >
         <div class="img-wrapper">
             <img :src="cardImg" alt="" class="poster">
         </div>

@@ -1,11 +1,13 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import AppDetailedCard from '../src/components/AppDetailedCard.vue';
 
 export default {
   components: {
     AppHeader,
     AppMain,
+    AppDetailedCard,
   }
 }
 

@@ -4,10 +4,12 @@ import axios from 'axios';
 import store from '../store';
 
 import AppCard from './AppCard.vue';
+import AppDetailedCard from './AppDetailedCard.vue';
 
 export default {
     components: {
         AppCard,
+        AppDetailedCard,
     },
 
     data(){
@@ -105,6 +107,7 @@ export default {
 
                 <AppCard 
                 v-for="film in allFilmList" :key="film.id"
+                :currentCard="film"
                 :cardImg="film.poster_path !== null ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : '/images/img-not-found.png'"
                 :filmType="film.title !== undefined ? 'film' : 'tv series'"
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
@@ -113,6 +116,10 @@ export default {
                 :maxRank="convertedVote(film)" />
 
             </div>
+
+            <AppDetailedCard
+            :class="['hover-card', store.currentCard !== undefined ? 'active' : '']"
+            />
 
         </div>
 
@@ -135,6 +142,20 @@ export default {
         padding: 20px 0;
     }
 
+}
+
+
+.hover-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+
+
+    &.active {
+        display: block;
+    }
 }
 
 </style>
