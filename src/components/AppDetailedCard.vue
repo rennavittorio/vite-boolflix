@@ -48,10 +48,10 @@ export default {
                 {{ cardTitle }}
             </h1>
             <p class="description">
-                {{ cardOverview }}
+                <span class="text-title">Description:</span> {{ cardOverview }}
             </p>
             <ul class="cast-wrapper">
-                <span class="cast-title">Cast:</span>
+                <span class="text-title">Cast:</span>
                 <li
                 v-for="member in cardCast"
                 >
@@ -122,17 +122,16 @@ export default {
     .cast-wrapper {
         display: flex;
         flex-wrap: wrap;
-        gap: 0 10px;
-
-
-        .cast-title {
-            font-weight: 700;
-            color: $main-red;
-        }
+        gap: 0 5px;
 
         li:not(:last-child)::after{
             content: ',';
         }
+    }
+
+    .text-title {
+        font-weight: 700;
+        color: $main-red;
     }
 }
 
