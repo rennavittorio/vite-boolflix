@@ -22,10 +22,10 @@ export default {
         fetchFilms(){
             const mainUrl = 'https://api.themoviedb.org/3';
             const sectionUrl = ['/search/movie', '/search/tv'];
-
+            let genreSelected = this.store.currentGenre;
             const apiKey = '483d15c985307da0fbc47d77970aec89';
 
-            console.log('fetching films done')
+            console.log('fetching FILMS done')
 
             sectionUrl.forEach((el) => {
                 const completeUrl = mainUrl + el;
@@ -37,11 +37,11 @@ export default {
                     }
                 })
                 .then((res)=>{
-                    this.store.filmList = res.data.results
                     if(el === '/search/movie'){
                         this.store.onlyFilmList = res.data.results;
                         // console.log('only films:', this.store.onlyFilmList);
-                    } else {
+                    }
+                    if (el === '/search/tv'){
                         this.store.onlyTvList = res.data.results;
                         // console.log('only tv:', this.store.onlyTvList);
                     }
@@ -70,6 +70,7 @@ export default {
         convertedVote(film){
             return Math.floor(film.vote_average / 2);
         },
+
     },
 
     watch: {
@@ -88,7 +89,7 @@ export default {
         },
         castToFive(){
             return this.store.currentCast.slice(0, 5)
-        }
+        },
 
     },
 
@@ -108,7 +109,7 @@ export default {
 
             <div :class="['grid', store.currentCard !== undefined ? 'blurred' : '' ]">
 
-                <AppCard 
+                <AppCard
                 v-for="film in allFilmList" :key="film.id"
                 :currentCard="film"
                 :cardImg="film.poster_path !== null ? `https://image.tmdb.org/t/p/w500${film.poster_path}` : '/images/img-not-found.png'"
@@ -116,7 +117,9 @@ export default {
                 :cardTitle="film.title !== undefined ? film.title : film.name" 
                 :cardOriginalTitle="film.original_title || film.original_name" 
                 :cardLang="setFlag(film)"
-                :maxRank="convertedVote(film)" />
+                :maxRank="convertedVote(film)" 
+                :class="['card-filtered', film.genre_ids.includes(store.currentGenre) || store.currentGenre === 'undefined' ? '' : 'not-shown' ]"
+                />
 
             </div>
 
@@ -151,6 +154,10 @@ export default {
 
         &.blurred {
             filter: blur(5px) brightness(0.5);
+        }
+
+        .card-filtered.not-shown {
+            display: none;
         }
     }
 
