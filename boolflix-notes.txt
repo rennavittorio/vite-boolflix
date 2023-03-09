@@ -1,0 +1,76 @@
+--- Boolflix - Notes ---
+
+// MLS split:
+- tue 7/3: MLS 0, 1 
+layout generale + stamp cards + searchbar (film)
+
+- wed 8/3: MLS 2 
+stamp bandierine + search (serieTV, tramite nuovo endpoint, meglio gestire tramite due array separati)
+
+- thu 9/3: MLS 3 
+-- MLS 3.1 --
+aggiungere la copertina delle img (è un insieme di più parti: 
+1. URL base del server
+2. elemento w323 che ne identifica la dimensione)
+3. 'poster_path' proveniente dal JSON
+-- MLS 3.2 --
+convertire voto film in scala a 5 + convertire in visual a stelline
+
+
+- fry 10/3: MLS 4
+parte grafica
+
+------------------------------------------------------------------
+
+// Registrazione al server themoviedb.org (per avere API key):
+1. <registrati> >> compilare form >> <activate account> da mail
+
+2. login sito
+
+3. -- generare key --
+3.1 setting >> profilo >> <click here> >> developer >> <accept terms>
+3.2 compilare form: nome-app: boolflix, URL: http://localhost, sommario: loremipsum...
+3.3 compilare altri dati e submit form
+
+-- API key --
+myApiKey: 483d15c985307da0fbc47d77970aec89
+example: https://api.themoviedb.org/3/movie/550?api_key=483d15c985307da0fbc47d77970aec89
+-- END --
+
+------------------------------------------------------------------
+
+// Documentazione API:
+API richiesta: 'search' -- 'search movie' && 'search series'
+
+- Abbiamo method + parte finale URI (per endpoint completo serve parte base da concatenare)
+
+- Auth: serve API key
+
+- Query string: contiene nomi tutti i params dell'API
+-- required: 'api key' && 'query' (i.e. serve per forza il nome di un film)
+
+
+--- Ticket con Gianlu ---
+--- tips & tricks ---
+1. creare due functions fetch in array
+2. usare lo spread operator per concat 2+ array
+3. metodo map() per ri-strutturare gli oggetti a livello di proprietà singole -> da studiare
+4. al posto di un ternario posso usare gli operatori logici ( OR, AND, etc ) -> funziona perché in assenza di valore abbiamo undefined OR null
+4.1. && funziona all'opposto: se primo true, ritorna il secondo ( e viceversa )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
