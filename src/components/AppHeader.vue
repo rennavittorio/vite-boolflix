@@ -55,9 +55,14 @@ export default {
 
     computed: {
         allGenresList(){
+            //metto inseme gli array
             let allGenresDuplicateList = [...this.store.genresFilmsList, ...this.store.genresTvList];
+
+            //tolgo duplicati
             let idsList = allGenresDuplicateList.map(genre => genre.id);
             let filteredGenreList = allGenresDuplicateList.filter(({ id }, index) => !idsList.includes(id, index + 1))
+
+            //ordino alfab e ritorno array
             return filteredGenreList.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
         }
     },
