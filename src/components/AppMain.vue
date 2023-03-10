@@ -82,7 +82,7 @@ export default {
     computed: {
         allFilmList(){
             // return this.store.onlyFilmList.concat(this.store.onlyTvList)
-            return [...this.store.onlyFilmList, ...this.store.onlyTvList]
+            return [...this.store.onlyFilmList, ...this.store.onlyTvList].sort((a,b) => ((a.name || a.title) > (b.name || b.title)) ? 1 : ((a.name || a.title) < (b.name || b.title) ? -1 : 0))
         },
         filmQuerySet(){
             return this.store.filmQuery;
